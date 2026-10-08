@@ -280,10 +280,6 @@ export default function CommandPage() {
   if (authStatus === 'login') {
     return (
       <main className="command-login-page">
-        <header className="command-login-header">
-          <a className="command-brand" href="/report"><span className="brand-mark">D</span> DisasterMesh</a>
-          <a className="citizen-link" href="/report">Citizen report <span aria-hidden="true">→</span></a>
-        </header>
         <section className="login-panel" aria-labelledby="login-title">
           <p className="command-eyebrow">CHENNAI / DISPATCHER ACCESS</p>
           <h1 id="login-title">Command center</h1>
@@ -292,7 +288,7 @@ export default function CommandPage() {
             <label htmlFor="dispatcher-passcode">Dispatcher passcode</label>
             <input id="dispatcher-passcode" type="password" value={passcode} onChange={(event) => setPasscode(event.target.value)} autoComplete="current-password" required maxLength={256} />
             {loginError && <p className="login-error" role="alert">{loginError}</p>}
-            <button className="login-submit" type="submit">Sign in <span aria-hidden="true">→</span></button>
+            <button className="login-submit" type="submit"><span>Sign in</span> <span aria-hidden="true">→</span></button>
           </form>
           <p className="login-security">Protected session · passcode stays on this device</p>
         </section>
