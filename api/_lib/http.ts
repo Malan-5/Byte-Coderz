@@ -18,10 +18,26 @@ export function requireMethod(request: VercelRequest, allowed: readonly string[]
   }
 }
 
+function normalizeOrigin(value: string): string | null {
+  try { return new URL(value).origin; }
+  catch { return null; }
+}
+
 export function requireSameOrigin(request: VercelRequest): void {
   const origin = request.headers.origin;
-  if (typeof origin === 'string' && origin !== getEnv().APP_ORIGIN) {
-    throw new HttpError(403, 'Cross-origin request rejected', 'origin_rejected');
+  if (typeof origin === 'string') {
+    const allowedOrigins = new Set([normalizeOrigin(getEnv().APP_ORIGIN)]);
+    const host = request.headers.host;
+    const forwardedProto = request.headers['x-forwarded-proto'];
+    if (typeof host === 'string' && typeof forwardedProto === 'string') {
+      const protocol = forwardedProto.split(',')[0]!.trim();
+      if (protocol === 'http' || protocol === 'https') {
+        allowedOrigins.add(normalizeOrigin(`${protocol}://${host}`));
+      }
+    }
+    if (!allowedOrigins.has(normalizeOrigin(origin))) {
+      throw new HttpError(403, 'Cross-origin request rejected', 'origin_rejected');
+    }
   }
   const fetchSite = request.headers['sec-fetch-site'];
   if (fetchSite === 'cross-site') throw new HttpError(403, 'Cross-site request rejected', 'origin_rejected');

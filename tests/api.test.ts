@@ -31,6 +31,13 @@ test('dispatcher passcode and signed session work without exposing the passcode'
 test('same-origin guard rejects browser cross-site requests', () => {
   configureTestEnv();
   assert.doesNotThrow(() => requireSameOrigin({ headers: { origin: 'http://localhost:3000' } } as unknown as VercelRequest));
+  assert.doesNotThrow(() => requireSameOrigin({ headers: {
+    origin: 'https://disastermesh.vercel.app', host: 'disastermesh.vercel.app', 'x-forwarded-proto': 'https',
+  } } as unknown as VercelRequest));
+  assert.throws(() => requireSameOrigin({ headers: {
+    origin: 'https://evil.example', host: 'disastermesh.vercel.app', 'x-forwarded-proto': 'https',
+  } } as unknown as VercelRequest),
+  (error: unknown) => error instanceof HttpError && error.status === 403);
   assert.throws(() => requireSameOrigin({ headers: { origin: 'https://evil.example' } } as unknown as VercelRequest),
     (error: unknown) => error instanceof HttpError && error.status === 403);
   assert.throws(() => requireSameOrigin({ headers: { 'sec-fetch-site': 'cross-site' } } as unknown as VercelRequest), HttpError);
