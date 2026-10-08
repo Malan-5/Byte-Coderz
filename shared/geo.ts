@@ -1,4 +1,4 @@
-import type { Coordinates } from './types';
+import type { Coordinates } from './types.js';
 
 export const EARTH_RADIUS_M = 6_371_000;
 

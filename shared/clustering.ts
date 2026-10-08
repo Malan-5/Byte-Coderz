@@ -1,7 +1,7 @@
-import { haversineMeters, isCoordinates, meanCoordinates } from './geo';
-import { SEVERITY_RANK } from './scoring';
-import { SEVERITIES } from './types';
-import type { Coordinates, EmergencyType, Incident, Severity } from './types';
+import { haversineMeters, isCoordinates, meanCoordinates } from './geo.js';
+import { SEVERITY_RANK } from './scoring.js';
+import { SEVERITIES } from './types.js';
+import type { Coordinates, EmergencyType, Incident, Severity } from './types.js';
 
 export const CLUSTER_RADIUS_M = 300;
 export const CLUSTER_WINDOW_MS = 60 * 60 * 1000;

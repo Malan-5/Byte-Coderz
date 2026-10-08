@@ -1,6 +1,6 @@
-import { extractFallbackEntities, extractVulnerableGroups } from './entities';
-import { keywordPresence } from './text';
-import type { ExtractedEntities, LlmAnalysis, LlmStatus, Severity, SeverityReasoning, WeightedHit } from './types';
+import { extractFallbackEntities, extractVulnerableGroups } from './entities.js';
+import { keywordPresence } from './text.js';
+import type { ExtractedEntities, LlmAnalysis, LlmStatus, Severity, SeverityReasoning, WeightedHit } from './types.js';
 
 export const SEVERITY_RANK: Record<Severity, number> = { Low: 0, Medium: 1, High: 2, Critical: 3 };
 export const SEVERITY_FLOOR: Record<Severity, number> = { Low: 0, Medium: 25, High: 50, Critical: 75 };

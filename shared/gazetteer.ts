@@ -1,4 +1,4 @@
-import type { Coordinates } from './types';
+import type { Coordinates } from './types.js';
 
 export interface Locality extends Coordinates { name: string; aliases: readonly string[] }
 

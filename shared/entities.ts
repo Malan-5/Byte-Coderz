@@ -1,6 +1,6 @@
-import { findGazetteerMatches } from './gazetteer';
-import { keywordPresence } from './text';
-import type { EmergencyType, ExtractedEntities, VulnerableGroup } from './types';
+import { findGazetteerMatches } from './gazetteer.js';
+import { keywordPresence } from './text.js';
+import type { EmergencyType, ExtractedEntities, VulnerableGroup } from './types.js';
 
 const GROUP_PATTERNS: [VulnerableGroup, RegExp][] = [
   ['children', /\b(?:children|child|kids?|bab(?:y|ies)|infants?)\b/],

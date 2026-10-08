@@ -1,5 +1,5 @@
-import { haversineMeters, isCoordinates } from './geo';
-import type { EmergencyType, Incident, Unit, UnitType } from './types';
+import { haversineMeters, isCoordinates } from './geo.js';
+import type { EmergencyType, Incident, Unit, UnitType } from './types.js';
 
 export const ASSUMED_SPEED_KPH = 30;
 export const DEMO_MOVEMENT_MULTIPLIER = 15;
