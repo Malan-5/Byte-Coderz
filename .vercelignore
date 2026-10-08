@@ -1,0 +1,13 @@
+# Local secrets must never be uploaded as deployment source.
+.env
+.env.*
+*.pem
+*.key
+
+# Vercel installs dependencies and produces its own build.
+node_modules/
+dist/
+coverage/
+.git/
+.vercel/
+*.log

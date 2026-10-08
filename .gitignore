@@ -1,0 +1,22 @@
+# Dependencies and generated files
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+
+# Credentials: only the empty example belongs in Git.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Local cloud project metadata and logs
+.vercel/
+*.log
+.DS_Store
+Thumbs.db
+
+.vercel
+.env*
+!.env.example
